@@ -1,16 +1,15 @@
 package br.org.ceivi.model.dto;
 
-import br.org.ceivi.model.Meta;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
-public class AreaDeNegocioResponseDTO {
+public class PlanoDeAcaoResponseDTO {
     private long id;
     private String nome;
-    private List<Meta> metas;
+    private LocalDate dataEntrega;
     private LocalDateTime criadoEm;
     private LocalDateTime modificadoEm;
 }
