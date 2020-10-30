@@ -8,7 +8,9 @@ import br.org.ceivi.repository.MetaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class MetaService {
@@ -34,11 +36,15 @@ public class MetaService {
         Optional<Meta> metaOptional = metaRepository.findById(metaId);
         if (metaOptional.isPresent()) {
             Meta meta = metaOptional.get();
-//            meta.setNome(metaRequestDTO.getNome());
+            meta.setNome(metaRequestDTO.getNome());
             Meta save = metaRepository.save(meta);
             return metaMapper.toResponse(save);
         }
         return null;
+    }
+
+    public List<MetaResponseDTO> getAll() {
+        return metaRepository.findAll().stream().map(metaMapper::toResponse).collect(Collectors.toList());
     }
 
     public void deleteMeta(long metaId) {

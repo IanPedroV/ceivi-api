@@ -8,7 +8,9 @@ import br.org.ceivi.repository.AreaDeNegocioRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AreaDeNegocioService {
@@ -42,5 +44,9 @@ public class AreaDeNegocioService {
 
     public void deleteAreaDeNegocio(long areaDeNegocioId) {
         areaDeNegocioRepository.deleteById(areaDeNegocioId);
+    }
+
+    public List<AreaDeNegocioResponseDTO> getAll() {
+        return areaDeNegocioRepository.findAll().stream().map(areaDeNegocioMapper::toResponse).collect(Collectors.toList());
     }
 }

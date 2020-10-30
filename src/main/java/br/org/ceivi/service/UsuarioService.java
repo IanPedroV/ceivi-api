@@ -8,7 +8,9 @@ import br.org.ceivi.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService {
@@ -45,5 +47,9 @@ public class UsuarioService {
 
     public void deleteUsuario(long usuarioId) {
         usuarioRepository.deleteById(usuarioId);
+    }
+
+    public List<UsuarioResponseDTO> getAll() {
+        return usuarioRepository.findAll().stream().map(usuarioMapper::toResponse).collect(Collectors.toList());
     }
 }

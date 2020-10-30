@@ -6,6 +6,8 @@ import br.org.ceivi.service.MetaService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/meta")
 public class MetaController {
@@ -19,6 +21,11 @@ public class MetaController {
     @GetMapping("/{metaId}")
     public ResponseEntity<MetaResponseDTO> getMeta(@PathVariable long metaId) {
         return ResponseEntity.ok(metaService.getMeta(metaId));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<MetaResponseDTO>> getAll() {
+        return ResponseEntity.ok(metaService.getAll());
     }
 
     @PostMapping

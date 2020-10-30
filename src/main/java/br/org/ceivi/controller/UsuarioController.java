@@ -6,6 +6,8 @@ import br.org.ceivi.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/usuario")
 public class UsuarioController {
@@ -19,6 +21,11 @@ public class UsuarioController {
     @GetMapping("/{usuarioId}")
     public ResponseEntity<UsuarioResponseDTO> getUsuario(@PathVariable long usuarioId) {
         return ResponseEntity.ok(usuarioService.getUsuario(usuarioId));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<UsuarioResponseDTO>> getAll() {
+        return ResponseEntity.ok(usuarioService.getAll());
     }
 
     @PostMapping
