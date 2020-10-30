@@ -17,8 +17,8 @@ public class Meta {
     private String nome;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
-    private List<PlanoDeAcao> metas;
+    @JoinColumn(name = "meta_id")
+    private List<PlanoDeAcao> planoDeAcaos;
 
     @CreatedDate
     private LocalDateTime criadoEm;

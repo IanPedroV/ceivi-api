@@ -17,7 +17,7 @@ public class AreaDeNegocio {
     private String nome;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "area_de_negocio_id")
     private List<Meta> metas;
 
     @CreatedDate

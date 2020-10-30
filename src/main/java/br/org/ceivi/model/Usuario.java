@@ -4,11 +4,9 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,5 +28,9 @@ public class Usuario {
 
     @LastModifiedDate
     private LocalDateTime modificadoEm;
+
+    @OneToMany
+    @JoinColumn(name = "usuario_id")
+    private List<AreaDeNegocio> areasDeNegocio;
 
 }
